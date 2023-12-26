@@ -56,7 +56,8 @@ function init(plugin)
             out_h:write(string.format("#define %s_WIDTH   %d\n", name:upper(), spr.width));
             out_h:write(string.format("#define %s_HEIGHT  %d\n", name:upper(), spr.height));
             out_h:write(string.format("#define %s_FRAMES  %d\n", name:upper(), #spr.frames));
-            out_h:write(string.format("static unsigned int %s_data[SPRITE_FRAMES][SPRITE_WIDTH*SPRITE_HEIGHT] = {", name))
+            out_h:write(string.format("static unsigned int %s_data[%s_FRAMES][%s_WIDTH*%s_HEIGHT] = {", name,
+            name:upper(), name:upper(), name:upper()))
             local img = Image(spr.spec)
             for f = 1, #spr.frames do
               img:drawSprite(spr, f)
